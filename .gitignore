@@ -26,3 +26,6 @@ go.work.sum
 
 /qr-grpc/proto/service.pb.go
 /qr-grpc/proto/service_grpc.pb.go
+
+
+/qr-grpc/build
