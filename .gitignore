@@ -24,4 +24,5 @@ go.work.sum
 # env file
 .env
 
-./qr-grpc/proto/*.pb.go
+./qr-grpc/proto/service.pb.go
+./qr-grpc/proto/service_grpc.pb.go
