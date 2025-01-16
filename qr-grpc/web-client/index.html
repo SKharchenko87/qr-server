@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор QR кода</title>
+</head>
+<body>
+<h1>Генератор QR кода</h1>
+<form action="/generate" method="post">
+    <label for="text">Текст:</label>
+    <input type="text" id="text" name="text" required>
+    <br><br>
+    <label for="levelCorrection">Выберите опцию:</label>
+    <select id="levelCorrection" name="levelCorrection" required>
+        <option value="High">High - до 30% повреждений</option>
+        <option value="Quality">Quality - до 25% повреждений</option>
+        <option value="Medium">Medium - до 15% повреждений</option>
+        <option value="Low">Low - до 7% повреждений</option>
+    </select>
+    <br><br>
+    <button type="submit">Сгенерировать qr код</button>
+</form>
+
+{{if .ImageBase64}}
+<h2>Результат:</h2>
+<img src="data:image/png;base64,{{.ImageBase64}}" alt="Generated Image">
+{{end}}
+
+</body>
+</html>
