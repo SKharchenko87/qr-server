@@ -10,10 +10,10 @@ service QRGenerateService {
 
 message GenerateRequest {
   string text = 1; // Кодируемый текст
-  KindType kind = 2; // Вид кодирования
+  LevelCorrectionType levelCorrection = 2; // Вид кодирования
 }
 
-enum KindType {
+enum LevelCorrectionType {
   High = 0; // Допустимо максимум 30% повреждений
   Quality = 1; // Допустимо максимум 25% повреждений
   Medium = 2; // Допустимо максимум 15% повреждений
@@ -26,7 +26,7 @@ message GenerateResponse {
 }
 
 message GenerateResponseRow {
-  repeated bool values = 1; // строка булевой матрицы
+  repeated bool v = 1; // строка булевой матрицы
 }
 
 

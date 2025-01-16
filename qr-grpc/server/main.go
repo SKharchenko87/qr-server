@@ -19,12 +19,12 @@ type server struct {
 func (s *server) Generate(ctx context.Context, req *pb.GenerateRequest) (*pb.GenerateResponse, error) {
 	log.Printf("Received: %v", req)
 	text := req.GetText()
-	kind := req.GetKind()
-	qr := qr.GenerateQR(text, qr.LevelCorrection(kind))
+	levelCorrection := req.GetLevelCorrection()
+	qr := qr.GenerateQR(text, qr.LevelCorrection(levelCorrection))
 	size := len(qr)
 	res := pb.GenerateResponse{Qr: make([]*pb.GenerateResponseRow, size)}
 	for i, row := range qr {
-		res.Qr[i] = &pb.GenerateResponseRow{Values: row}
+		res.Qr[i] = &pb.GenerateResponseRow{V: row}
 	}
 	return &res, nil
 }

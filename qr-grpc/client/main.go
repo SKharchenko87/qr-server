@@ -19,8 +19,8 @@ func main() {
 
 	client := pb.NewQRGenerateServiceClient(conn)
 	req := &pb.GenerateRequest{
-		Text: "1234567890",
-		Kind: pb.KindType_Medium,
+		Text:            "1234567890",
+		LevelCorrection: pb.LevelCorrectionType_Medium,
 	}
 
 	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
