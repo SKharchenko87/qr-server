@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package QRServerGRPC;
+
+option go_package = "qr-grpc/proto;service";
+
+service QRGenerateService {
+  rpc Generate(GenerateRequest) returns (GenerateResponse);
+}
+
+message GenerateRequest {
+  string text = 1; // Кодируемый текст
+  KindType kind = 2; // Вид кодирования
+}
+
+enum KindType {
+  High = 0; // Допустимо максимум 30% повреждений
+  Quality = 1; // Допустимо максимум 25% повреждений
+  Medium = 2; // Допустимо максимум 15% повреждений
+  Low = 3; // Допустимо максимум 7% повреждений
+}
+
+
+message GenerateResponse {
+  repeated GenerateResponseRow qr = 1; // qr код в виде булевой матрицы
+}
+
+message GenerateResponseRow {
+  repeated bool values = 1; // строка булевой матрицы
+}
+
+
+
